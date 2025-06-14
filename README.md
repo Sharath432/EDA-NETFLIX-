@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## Overview
-This project demonstrates data cleaning and exploratory data analysis (EDA) on the Netflix titles dataset using Python in a Jupyter Notebook. The goal is to prepare the dataset for analysis by addressing missing values, duplicates, and inconsistent formats, enabling insights into Netflix’s movie and TV show catalog.
+This project demonstrates data cleaning on the Netflix titles dataset using Python in a Jupyter Notebook. The goal is to prepare the dataset for analysis by addressing missing values, duplicates, and inconsistent formats, enabling insights into Netflix’s movie and TV show catalog.
 
 **Dataset**: [Netflix Movies and TV Shows](https://www.kaggle.com/datasets/shivamb/netflix-shows) by Shivam Bansal, containing ~8,800 rows with columns: `show_id`, `type`, `title`, `director`, `cast`, `country`, `date_added`, `release_year`, `rating`, `listed_in`, `description`.
 
