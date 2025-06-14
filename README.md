@@ -1,89 +1,122 @@
-Netflix Basic Data Cleaning Project
-Overview
-This project focuses on performing basic data cleaning and exploratory data analysis (EDA) on a Netflix dataset using Python in a Google Colab environment. The primary goal is to preprocess the dataset, handle missing values, correct data inconsistencies, and derive meaningful insights through data analysis and visualization.
-Project Description
-The Netflix Basic Data Cleaning Project involves loading a Netflix dataset, identifying and addressing data quality issues such as missing values, duplicates, and incorrect data types, and performing exploratory analysis to uncover trends and patterns. The project is implemented in a Google Colab notebook, utilizing popular Python libraries such as Pandas, NumPy, and Matplotlib/Seaborn for data manipulation and visualization.
-Key Objectives
+# Netflix Data Cleaning and EDA
 
-Data Cleaning: Handle missing values, remove duplicates, and standardize data formats (e.g., date parsing, categorical encoding).
-Exploratory Data Analysis: Generate summary statistics and visualizations to understand the distribution of key variables, such as movie/TV show genres, release years, and ratings.
-Insights: Identify trends in Netflix content, such as popular genres, production countries, or content growth over time.
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-Dataset
-The dataset used in this project contains information about Netflix titles, including attributes such as:
+## Overview
+This project demonstrates data cleaning and exploratory data analysis (EDA) on the Netflix titles dataset using Python in a Jupyter Notebook. The goal is to prepare the dataset for analysis by addressing missing values, duplicates, and inconsistent formats, enabling insights into Netflix’s movie and TV show catalog.
 
-Title
-Type (Movie/TV Show)
-Genre
-Release Year
-Rating
-Duration
-Country
-Description
+**Dataset**: [Netflix Movies and TV Shows](https://www.kaggle.com/datasets/shivamb/netflix-shows) by Shivam Bansal, containing ~8,800 rows with columns: `show_id`, `type`, `title`, `director`, `cast`, `country`, `date_added`, `release_year`, `rating`, `listed_in`, `description`.
 
-Note: The dataset is not included in this repository. Users must provide their own Netflix dataset or use a publicly available dataset (e.g., from Kaggle) to replicate the analysis.
-Prerequisites
-To run this project, ensure you have the following:
+**Skills Demonstrated**:
+- Data cleaning with pandas
+- Handling missing values and standardizing formats
+- Feature engineering (e.g., extracting years, splitting genres)
+- Visualization with seaborn and matplotlib
+- Reproducible Jupyter Notebook workflow
 
-Google Colab or a Python environment with Jupyter Notebook support
-Python Libraries:
-Pandas
-NumPy
-Matplotlib
-Seaborn
+## Table of Contents
+- [Features](#features)
+- [Cleaning Steps](#cleaning-steps)
+- [File Structure](#file-structure)
+- [How to Use](#how-to-use)
+- [Installation](#installation)
+- [Results](#results)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+
+## Features
+- **Comprehensive Cleaning**: Addresses missing values, duplicates, and format inconsistencies.
+- **Documented Process**: Markdown cells explain each step and its rationale.
+- **Reproducible**: Runs in Google Colab or locally with the provided dataset.
+- **Visual Insights**: Includes plots like missing value heatmaps and release year distributions.
+
+## Cleaning Steps
+1. **Loaded Data**: Imported the dataset using `pandas.read_csv()`.
+2. **Explored Data**: Used `df.info()` and `df.isnull().sum()` to identify issues (~30% missing in `director`, 9% in `cast`, `country`).
+3. **Handled Missing Values**:
+   - Filled `director`, `cast`, and `country` with "Unknown".
+   - Dropped rows with missing `title` or `date_added`.
+4. **Removed Duplicates**: Dropped duplicates based on `title`.
+5. **Standardized Formats**:
+   - Converted `date_added` to datetime.
+   - Normalized text in `title` and `listed_in`.
+6. **Corrected Data Types**:
+   - Ensured `release_year` is an integer.
+   - Extracted numeric `duration` (minutes for movies, seasons for shows).
+7. **Feature Engineering**:
+   - Added `year_added` and `month_added` from `date_added`.
+   - Split `listed_in` into genre lists.
+8. **Visualizations**: Created heatmaps and histograms (e.g., release year distribution).
+9. **Saved Output**: Exported cleaned data to `netflix_cleaned.csv`.
+
+See [NETFLIX_DATA_CLEANING.ipynb](NETFLIX_DATA_CLEANING.ipynb) for details.
+
+## File Structure
+
+EDA-NETFLIX-/├── README.md├── NETFLIX_DATA_CLEANING.ipynb├── netflix_titles.csv          # Original dataset├── netflix_cleaned.csv         # Cleaned dataset (optional)└── requirements.txt            # Dependencies
+
+## How to Use
+1. **Run in Colab**:
+   - Open: [Netflix Data Cleaning](https://colab.research.google.com/drive/18MUm8D4bfSzqY-uEf59QabnbqfYrMJHL?usp=sharing).
+   - Click “Copy to Drive” to edit.
+   - Execute cells to run cleaning and view plots.
+2. **Run Locally**:
+   - Download `NETFLIX_DATA_CLEANING.ipynb` and `netflix_titles.csv`.
+   - Install dependencies (see [Installation](#installation)).
+   - Open in Jupyter: `jupyter notebook NETFLIX_DATA_CLEANING.ipynb`.
+3. **Access the Dataset**:
+   - Use `netflix_titles.csv` from the repo or download from [Kaggle](https://www.kaggle.com/datasets/shivamb/netflix-shows).
+   - Alternatively, load via:
+     ```python
+     url = 'https://raw.githubusercontent.com/Sharath432/EDA-NETFLIX-/main/netflix_titles.csv'
+     df = pd.read_csv(url)
+     ```
+
+## Installation
+For local execution:
+1. Install Python 3.8+.
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
 
 
-A Netflix dataset in CSV format (or similar)
-
-Installation
-
-Clone this repository to your local machine:git clone https://github.com/<your-username>/netflix-data-cleaning.git
+Install Jupyter Notebook:pip install jupyter
 
 
-Open the Google Colab notebook link: Netflix Basic Data Cleaning Notebook
-Upload the Netflix dataset to your Google Colab environment or mount your Google Drive to access the dataset.
-Install the required libraries in the Colab notebook:!pip install pandas numpy matplotlib seaborn
+Run the notebook:jupyter notebook NETFLIX_DATA_CLEANING.ipynb
 
 
 
-Usage
-
-Open the provided Google Colab notebook.
-Load the Netflix dataset into the notebook using Pandas.
-Follow the step-by-step code in the notebook to:
-Clean the dataset (handle missing values, remove duplicates, etc.).
-Perform exploratory data analysis (e.g., visualize genre distributions or release year trends).
-
-
-Modify the code as needed to explore additional aspects of the dataset or apply different cleaning techniques.
-
-Project Structure
-
-Netflix_Basic_Data_Cleaning.ipynb: The main Google Colab notebook containing the data cleaning and EDA code.
-README.md: This file, providing an overview and instructions for the project.
+requirements.txt:
+pandas==1.5.3
+numpy==1.24.3
+seaborn==0.12.2
+matplotlib==3.7.1
 
 Results
-The project produces:
 
-A cleaned Netflix dataset ready for further analysis.
-Visualizations such as bar charts, histograms, and pie charts to highlight key insights (e.g., most common genres, content distribution by country).
-Summary statistics to describe the dataset's characteristics.
+Cleaned Dataset: Reduced missing values by ~90%, standardized formats, and added features like year_added.
+Insights: Ready for analyzing trends (e.g., content growth by year, genre distribution).
+Output: netflix_cleaned.csv contains the processed dataset.
 
 Contributing
-Contributions are welcome! If you have suggestions for improving the data cleaning process, additional analyses, or visualizations, please:
+Contributions are welcome! To contribute:
 
 Fork the repository.
-Create a new branch (git checkout -b feature-branch).
-Commit your changes (git commit -m "Add feature").
-Push to the branch (git push origin feature-branch).
+Create a branch: git checkout -b feature/new-cleaning-step.
+Commit changes: git commit -m "Add cleaning for ratings".
+Push: git push origin feature/new-cleaning-step.
 Open a pull request.
 
+Please follow the code of conduct.
 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See LICENSE for details.
 Acknowledgments
 
-The dataset used in this project is sourced from publicly available Netflix data (e.g., Kaggle or similar platforms).
-Thanks to the open-source community for providing tools like Pandas, NumPy, Matplotlib, and Seaborn.
+Dataset: Netflix Movies and TV Shows by Shivam Bansal.
+Inspiration: Kaggle community and data science tutorials.
+Created by Sharath432 (https://github.com/Sharath432).
 
 Contact
 For questions or feedback, please open an issue on this repository or contact the project maintainer at [rsarath16new@gmail.com].
